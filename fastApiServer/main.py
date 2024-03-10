@@ -19,7 +19,7 @@ class ChatRequestApi(BaseModel):
     message: str
     user: str
 
-channel = grpc.insecure_channel("localhost:50052")
+channel = grpc.insecure_channel("grpcbackend:50052")
 stub = ChatServerStub(channel)
 
 
