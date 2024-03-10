@@ -12,6 +12,7 @@ class ChatServerServicer(chatMessage_pb2_grpc.ChatServerServicer):
     
 
 def serve():
+    print("Starting grpc server...")
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     chatMessage_pb2_grpc.add_ChatServerServicer_to_server(ChatServerServicer(), server)
     server.add_insecure_port("[::]:50052")

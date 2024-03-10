@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  grpcbackend:
+    build:
+      context: grpcServer
+      dockerfile: Dockerfile
+    ports:
+      - 50052:50052
+    restart: always
+    networks:
+      - app
+    container_name: grpcbackend
+    
+  mainbackend:
+    build:
+      context: fastApiServer
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    restart: always
+    networks:
+      - app
+    container_name: mainbackend
+
+networks:
+  app:
+    driver: bridge
